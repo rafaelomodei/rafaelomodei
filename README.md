@@ -8,5 +8,4 @@
  
 ##
  
-![Alt text](https://github.com/rafaelomodei/rafaelomodei/blob/output/github-contribution-grid-snake.svg)
-<img src="https://github.com/rafaelomodei/rafaelomodei/blob/output/github-contribution-grid-snake.svg">
+![Snake animation](https://github.com/rafaelomodei/rafaelomodei/blob/output/github-contribution-grid-snake.svg)
