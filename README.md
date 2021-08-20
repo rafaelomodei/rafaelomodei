@@ -9,5 +9,5 @@
 ##
  
 <div>
-  ![Snake animation](https://github.com/rafaelomodei/rafaelomodei/blob/dist/github-contribution-grid-snake.svg) 
+  ![Snake animation](https://github.com/rafaelomodei/rafaelomodei/blob/output/github-contribution-grid-snake.svg)
 </div>
