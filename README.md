@@ -1,5 +1,7 @@
 ### Hy, I'm Rafael Omodei 👋
 
+ <p align="left"> <img src="https://komarev.com/ghpvc/?username=rafaelomodei" alt="rafaelomodei" /> </p>
+
 Computer Science student in UTFPR-SH. Enthusiast of: Electronics, IoT, Data, Data Science, Machine Learning, Mathematics and Development with ReactJS, Flutter, C and Matlab.
 
 
@@ -9,7 +11,6 @@ Computer Science student in UTFPR-SH. Enthusiast of: Electronics, IoT, Data, Dat
   <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rafaelomodei&layout=compact&langs_count=7&theme=vue-dark"/>
 </div>
  
- <p align="left"> <img src="https://komarev.com/ghpvc/?username=rafaelomodei" alt="rafaelomodei" /> </p>
 
  
 ##
