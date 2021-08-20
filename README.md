@@ -8,6 +8,5 @@
  
 ##
  
-<div>
-  ![Snake animation](https://github.com/rafaelomodei/rafaelomodei/blob/output/github-contribution-grid-snake.svg)
-</div>
+![Alt text](./controllers_brief.svg)
+<img src="./controllers_brief.svg">
