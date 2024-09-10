@@ -1,8 +1,15 @@
-### Hy, I'm Rafael Omodei 👋
+<div>
+  <h3 style="display: inline-block;">Hy, I'm Rafael Omodei 👋</h3>
+  <a href="https://www.linkedin.com/in/rafael-geovani-omodei-52919a1a1" target="_blank" style="display: inline-block; margin-left: auto;">
+    <img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+  </a>
+</div>
 
  <p align="left"> <img src="https://komarev.com/ghpvc/?username=rafaelomodei" alt="rafaelomodei" /> </p>
 
-Computer Science student in UTFPR-SH. Enthusiast of: Electronics, IoT, Data, Data Science, Machine Learning, Mathematics and Development with ReactJS, Flutter, C and Matlab.
+
+I am a Software Engineer with over 5 years of experience. My relentless curiosity drives me to keep my knowledge up-to-date, resulting in continuous improvements in my professional practice.
+
 
 
  <div>
@@ -13,27 +20,17 @@ Computer Science student in UTFPR-SH. Enthusiast of: Electronics, IoT, Data, Dat
 
 
 <div style="display: inline_block"><br>
+  <img align="center" alt="Rapha-Node" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
+   <img align="center" alt="RRapha-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
   <img align="center" alt="Rapha-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
-  <img align="center" alt="RRapha-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
   <img align="center" alt="Rapha-React" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
   <img align="center" alt="Rapha-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
   <img align="center" alt="Rapha-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-  <img align="center" alt="Rapha-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg">
   <img align="center" alt="Rapha-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg">
-  <img align="center" alt="Rapha-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/matlab/matlab-original.svg">
-  <img align="center" alt="Rapha-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg">
- 
- 
- 
- 
 </div>
  
 ##
 
-<div>
-  <a href="https://instagram.com/rafael_omodei" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
-  <a href = "mailto:rafael.omodei@outlook.com.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-  <a href="https://www.linkedin.com/in/rafael-geovani-omodei-52919a1a1" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
-</div>
+
  
 ![Snake animation](https://github.com/rafaelomodei/rafaelomodei/blob/output/github-contribution-grid-snake.svg)
