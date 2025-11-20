@@ -30,7 +30,3 @@ I am a Software Engineer with over 5 years of experience. My relentless curiosit
 </div>
  
 ##
-
-
- 
-![Snake animation](https://github.com/rafaelomodei/rafaelomodei/blob/output/github-contribution-grid-snake.svg)
