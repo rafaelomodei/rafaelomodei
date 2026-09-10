@@ -1,14 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rafael Omodei — terminal GitHub profile">
-<style>.line{font:18px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}.small{font:16px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}.ascii{font:25px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-weight:700}.project{font:21px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-weight:700}</style>
-<rect width="1200" height="720" rx="18" fill="#0d1117"/><rect x="27" y="27" width="1138" height="658" rx="14" fill="#010409" stroke="#30363d"/><path d="M27 41C27 33.268 33.268 27 41 27H1151C1158.73 27 1165 33.268 1165 41V79H27V41Z" fill="#161b22"/><line x1="27" y1="79.5" x2="1165" y2="79.5" stroke="#30363d"/>
-<circle cx="58" cy="53" r="7" fill="#ff5f57"/><circle cx="82" cy="53" r="7" fill="#febc2e"/><circle cx="106" cy="53" r="7" fill="#28c840"/><text x="146" y="59" class="small" fill="#8b949e">rafaelomodei@github: ~/profile</text>
-<text x="76" y="127" class="line" fill="#3fb950">$ fastfetch</text>
-<g fill="#3fb950" class="ascii"><text x="92" y="215">██████╗   ██████╗ </text><text x="92" y="251">██╔══██╗ ██╔═══██╗</text><text x="92" y="287">██████╔╝ ██║   ██║</text><text x="92" y="323">██╔══██╗ ██║   ██║</text><text x="92" y="359">██║  ██║ ╚██████╔╝</text><text x="92" y="395">╚═╝  ╚═╝  ╚═════╝ </text></g>
-<text x="92" y="458" class="line" fill="#c9d1d9">rafaelomodei@github</text><text x="92" y="486" class="small" fill="#8b949e">build / automate / ship</text>
-<text x="565" y="144" class="project" fill="#3fb950">Rafael Omodei</text><line x1="565" y1="158" x2="1085" y2="158" stroke="#30363d"/>
-<g class="line"><text x="565" y="194"><tspan fill="#58a6ff">role</tspan><tspan fill="#8b949e">: </tspan><tspan fill="#c9d1d9">Senior Full Stack Software Engineer</tspan></text><text x="565" y="222"><tspan fill="#58a6ff">uptime</tspan><tspan fill="#8b949e">: </tspan><tspan fill="#c9d1d9">6+ years</tspan></text><text x="565" y="250"><tspan fill="#58a6ff">location</tspan><tspan fill="#8b949e">: </tspan><tspan fill="#c9d1d9">Brazil / Remote</tspan></text><text x="565" y="278"><tspan fill="#58a6ff">focus</tspan><tspan fill="#8b949e">: </tspan><tspan fill="#c9d1d9">Web platforms, APIs, automation</tspan></text><text x="565" y="306"><tspan fill="#58a6ff">stack</tspan><tspan fill="#8b949e">: </tspan><tspan fill="#c9d1d9">React / Next.js / TypeScript</tspan></text><text x="565" y="334" fill="#c9d1d9">       Node.js / NestJS / Java / Spring Boot</text><text x="565" y="362" fill="#c9d1d9">       Python / C++ / PostgreSQL / MongoDB</text><text x="565" y="390" fill="#c9d1d9">       AWS / GCP / Playwright / n8n</text></g>
-<text x="76" y="548" class="line" fill="#3fb950">$ github --stats</text><text x="76" y="579" class="small" fill="#8b949e">live stats generated automatically by GitHub Actions</text>
-<rect x="545" y="430" width="563" height="178" rx="10" fill="#161b22" stroke="#30363d"/><text x="570" y="465" class="small" fill="#3fb950">$ open ~/projects/easySlicePrint</text><text x="570" y="500" class="project" fill="#f0883e">EasySlice Print</text><text x="570" y="531" class="line" fill="#c9d1d9">Cut. Connect. Print.</text><text x="570" y="560" class="small" fill="#8b949e">Open-source Blender add-on for non-destructive</text><text x="570" y="584" class="small" fill="#8b949e">model splitting, connectors and 3D-print-ready parts.</text>
-<text x="76" y="645" class="line" fill="#3fb950">rafaelomodei@github:~$</text><rect x="287" y="628" width="11" height="20" rx="1" fill="#c9d1d9"/>
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none"
+  xmlns="http://www.w3.org/2000/svg" role="img"
+  aria-label="Rafael Omodei — terminal GitHub profile">
+  <style>
+    .line { font: 18px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .small { font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .ascii { font: 25px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-weight: 700; }
+    .project { font: 21px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-weight: 700; }
+  </style>
+
+  <rect width="1200" height="720" rx="18" fill="#0d1117"/>
+  <rect x="31" y="31" width="1138" height="658" rx="14" fill="#00000055"/>
+  <rect x="27" y="27" width="1138" height="658" rx="14" fill="#010409" stroke="#30363d"/>
+  <path d="M27 41C27 33.268 33.268 27 41 27H1151C1158.73 27 1165 33.268 1165 41V79H27V41Z" fill="#161b22"/>
+  <line x1="27" y1="79.5" x2="1165" y2="79.5" stroke="#30363d"/>
+
+  <circle cx="58" cy="53" r="7" fill="#ff5f57"/>
+  <circle cx="82" cy="53" r="7" fill="#febc2e"/>
+  <circle cx="106" cy="53" r="7" fill="#28c840"/>
+  <text x="146" y="59" class="small" fill="#8b949e">rafaelomodei@github: ~/profile</text>
+
+  <text x="76" y="127" class="line" fill="#3fb950">$ fastfetch</text>
+
+  <text x="92" y="215" class="ascii" fill="#3fb950">██████╗   ██████╗ </text><text x="92" y="251" class="ascii" fill="#3fb950">██╔══██╗ ██╔═══██╗</text><text x="92" y="287" class="ascii" fill="#3fb950">██████╔╝ ██║   ██║</text><text x="92" y="323" class="ascii" fill="#3fb950">██╔══██╗ ██║   ██║</text><text x="92" y="359" class="ascii" fill="#3fb950">██║  ██║ ╚██████╔╝</text><text x="92" y="395" class="ascii" fill="#3fb950">╚═╝  ╚═╝  ╚═════╝ </text>
+  <text x="92" y="458" class="line" fill="#c9d1d9">rafaelomodei@github</text>
+  <text x="92" y="486" class="small" fill="#8b949e">build / automate / ship</text>
+
+  <text x="565" y="144" class="project" fill="#3fb950">Rafael Omodei</text>
+  <line x1="565" y1="158" x2="1085" y2="158" stroke="#30363d"/>
+
+  
+    <text x="565" y="194" class="line">
+      <tspan fill="#58a6ff">role</tspan>
+      <tspan fill="#8b949e">: </tspan>
+      <tspan fill="#c9d1d9">Senior Full Stack Software Engineer</tspan>
+    </text>
+  
+    <text x="565" y="222" class="line">
+      <tspan fill="#58a6ff">uptime</tspan>
+      <tspan fill="#8b949e">: </tspan>
+      <tspan fill="#c9d1d9">6+ years</tspan>
+    </text>
+  
+    <text x="565" y="250" class="line">
+      <tspan fill="#58a6ff">location</tspan>
+      <tspan fill="#8b949e">: </tspan>
+      <tspan fill="#c9d1d9">Brazil / Remote</tspan>
+    </text>
+  
+    <text x="565" y="278" class="line">
+      <tspan fill="#58a6ff">focus</tspan>
+      <tspan fill="#8b949e">: </tspan>
+      <tspan fill="#c9d1d9">Web platforms, APIs, automation and integrations</tspan>
+    </text>
+  
+    <text x="565" y="300" class="line">
+      <tspan fill="#58a6ff">stack</tspan>
+      <tspan fill="#8b949e">: </tspan>
+      <tspan fill="#c9d1d9">React / Next.js / TypeScript</tspan>
+    </text>
+    <text x="565" y="328" class="line">
+      <tspan fill="#58a6ff">     </tspan>
+      <tspan fill="#8b949e">: </tspan>
+      <tspan fill="#c9d1d9">Node.js / NestJS / Java / Spring Boot</tspan>
+    </text>
+    <text x="565" y="356" class="line">
+      <tspan fill="#58a6ff">     </tspan>
+      <tspan fill="#8b949e">: </tspan>
+      <tspan fill="#c9d1d9">Python / C++ / PostgreSQL / MongoDB</tspan>
+    </text>
+    <text x="565" y="384" class="line">
+      <tspan fill="#58a6ff">     </tspan>
+      <tspan fill="#8b949e">: </tspan>
+      <tspan fill="#c9d1d9">AWS / GCP / Playwright / n8n</tspan>
+    </text>
+
+  <text x="76" y="548" class="line" fill="#3fb950">$ github --stats</text>
+  <text x="76" y="579" class="small" fill="#8b949e">
+    repos <tspan fill="#c9d1d9">62</tspan>
+    <tspan>  |  followers </tspan><tspan fill="#c9d1d9">14</tspan>
+    <tspan>  |  stars received </tspan><tspan fill="#c9d1d9">20</tspan>
+  </text>
+
+  <rect x="545" y="430" width="563" height="178" rx="10" fill="#161b22" stroke="#30363d"/>
+  <text x="570" y="465" class="small" fill="#3fb950">$ open ~/projects/easySlicePrint</text>
+  <text x="570" y="500" class="project" fill="#f0883e">EasySlice Print</text>
+  <text x="1035" y="500" text-anchor="end" class="small" fill="#8b949e">★ 2</text>
+  <text x="570" y="531" class="line" fill="#c9d1d9">Cut. Connect. Print.</text>
+  <text x="570" y="560" class="small" fill="#8b949e">Open-source Blender add-on for non-destructive</text>
+  <text x="570" y="584" class="small" fill="#8b949e">model splitting, connectors and 3D-print-ready parts.</text>
+
+  <text x="76" y="645" class="line" fill="#3fb950">rafaelomodei@github:~$</text>
+  <rect x="287" y="628" width="11" height="20" rx="1" fill="#c9d1d9"/>
 </svg>
