@@ -1,0 +1,20 @@
+{
+  "username": "rafaelomodei",
+  "name": "Rafael Omodei",
+  "role": "Senior Full Stack Software Engineer",
+  "experience": "6+ years",
+  "location": "Brazil / Remote",
+  "focus": "Web platforms, APIs, automation and integrations",
+  "stack": [
+    "React / Next.js / TypeScript",
+    "Node.js / NestJS / Java / Spring Boot",
+    "Python / C++ / PostgreSQL / MongoDB",
+    "AWS / GCP / Playwright / n8n"
+  ],
+  "featured": {
+    "repo": "easySlicePrint",
+    "title": "EasySlice Print",
+    "tagline": "Cut. Connect. Print.",
+    "description": "Open-source Blender add-on for non-destructive model splitting, custom connectors and 3D-print-ready parts."
+  }
+}
