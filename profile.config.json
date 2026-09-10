@@ -6,10 +6,21 @@
   "location": "Brazil / Remote",
   "focus": "Web platforms, APIs, automation and integrations",
   "stack": [
-    "React / Next.js / TypeScript",
-    "Node.js / NestJS / Java / Spring Boot",
-    "Python / C++ / PostgreSQL / MongoDB",
-    "AWS / GCP / Playwright / n8n"
+    { "id": "react", "label": "React" },
+    { "id": "nextjs", "label": "Next.js" },
+    { "id": "typescript", "label": "TypeScript" },
+    { "id": "nodejs", "label": "Node.js" },
+    { "id": "nestjs", "label": "NestJS" },
+    { "id": "java", "label": "Java" },
+    { "id": "springboot", "label": "Spring Boot" },
+    { "id": "python", "label": "Python" },
+    { "id": "cplusplus", "label": "C++" },
+    { "id": "postgresql", "label": "PostgreSQL" },
+    { "id": "mongodb", "label": "MongoDB" },
+    { "id": "aws", "label": "AWS" },
+    { "id": "googlecloud", "label": "Google Cloud" },
+    { "id": "playwright", "label": "Playwright" },
+    { "id": "n8n", "label": "n8n" }
   ],
   "featured": {
     "repo": "easySlicePrint",

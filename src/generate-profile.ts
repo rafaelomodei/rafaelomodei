@@ -7,7 +7,10 @@ type Config = {
   experience: string;
   location: string;
   focus: string;
-  stack: string[];
+  stack: Array<{
+    id: string;
+    label: string;
+  }>;
   featured: {
     repo: string;
     title: string;
@@ -18,6 +21,14 @@ type Config = {
 
 type GitHubRepo = {
   stargazers_count: number;
+};
+
+type StackIconAsset = {
+  id: string;
+  label: string;
+  svg: string;
+  kind: "simple" | "devicon";
+  color?: string;
 };
 
 type Theme = {
@@ -58,6 +69,37 @@ const themes: Record<"dark" | "light", Theme> = {
     orange: "#bc4c00",
     shadow: "#1f23281f"
   }
+};
+
+const SIMPLE_ICONS_REF = "5d5d4d1d28cbb00b21770bb69d8112da52211a95";
+const DEVICON_REF = "7330accdbc47e2dc0c19789a48533c4a3c50fe58";
+
+const stackIconSources: Record<
+  string,
+  | { kind: "simple"; slug: string; color: string }
+  | { kind: "devicon"; path: string }
+> = {
+  react: { kind: "simple", slug: "react", color: "#61DAFB" },
+  nextjs: { kind: "simple", slug: "nextdotjs", color: "theme" },
+  typescript: { kind: "simple", slug: "typescript", color: "#3178C6" },
+  nodejs: { kind: "simple", slug: "nodedotjs", color: "#5FA04E" },
+  nestjs: { kind: "simple", slug: "nestjs", color: "#E0234E" },
+  java: { kind: "simple", slug: "openjdk", color: "#ED8B00" },
+  springboot: { kind: "simple", slug: "springboot", color: "#6DB33F" },
+  python: { kind: "simple", slug: "python", color: "#3776AB" },
+  cplusplus: { kind: "simple", slug: "cplusplus", color: "#00599C" },
+  postgresql: { kind: "simple", slug: "postgresql", color: "#4169E1" },
+  mongodb: { kind: "simple", slug: "mongodb", color: "#47A248" },
+  aws: {
+    kind: "devicon",
+    path: "icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+  },
+  googlecloud: { kind: "simple", slug: "googlecloud", color: "#4285F4" },
+  playwright: {
+    kind: "devicon",
+    path: "icons/playwright/playwright-original.svg"
+  },
+  n8n: { kind: "simple", slug: "n8n", color: "#EA4B71" }
 };
 
 // Generated from Rafael's GitHub profile portrait (September 2026).
@@ -126,7 +168,71 @@ async function loadFeaturedStars(config: Config) {
   return featured.stargazers_count;
 }
 
-function render(config: Config, featuredStars: number, theme: Theme) {
+async function loadStackIcons(config: Config): Promise<StackIconAsset[]> {
+  return Promise.all(
+    config.stack.map(async ({ id, label }) => {
+      const source = stackIconSources[id];
+      if (!source) throw new Error(`Unknown stack icon: ${id}`);
+
+      const url =
+        source.kind === "simple"
+          ? `https://raw.githubusercontent.com/simple-icons/simple-icons/${SIMPLE_ICONS_REF}/icons/${source.slug}.svg`
+          : `https://raw.githubusercontent.com/devicons/devicon/${DEVICON_REF}/${source.path}`;
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`Could not load ${label} icon (${response.status})`);
+      }
+
+      return {
+        id,
+        label,
+        svg: await response.text(),
+        kind: source.kind,
+        ...(source.kind === "simple" ? { color: source.color } : {})
+      };
+    })
+  );
+}
+
+function inlineIcon(
+  icon: StackIconAsset,
+  theme: Theme,
+  x: number,
+  y: number,
+  size: number
+) {
+  let svg = icon.svg;
+
+  if (icon.id === "aws") {
+    svg = svg.replaceAll("#252f3e", theme.fg);
+  } else if (icon.id === "playwright" && theme.bg === themes.dark.bg) {
+    svg = svg.replaceAll("#2D4552", theme.fg);
+  }
+
+  const openingTag = svg.match(/<svg\b[^>]*>/)?.[0];
+  const closingTagIndex = svg.lastIndexOf("</svg>");
+  if (!openingTag || closingTagIndex < 0) {
+    throw new Error(`Invalid SVG for ${icon.label}`);
+  }
+
+  const viewBox = openingTag.match(/viewBox="([^"]+)"/)?.[1] ?? "0 0 24 24";
+  let body = svg.slice(svg.indexOf(openingTag) + openingTag.length, closingTagIndex);
+
+  if (icon.kind === "simple") {
+    const color = icon.color === "theme" ? theme.fg : icon.color;
+    body = `<g fill="${color}">${body}</g>`;
+  }
+
+  return `<svg x="${x}" y="${y}" width="${size}" height="${size}" viewBox="${viewBox}" aria-hidden="true">${body}</svg>`;
+}
+
+function render(
+  config: Config,
+  featuredStars: number,
+  stackIcons: StackIconAsset[],
+  theme: Theme
+) {
   const line = (y: number, label: string, value: string) => `
     <text y="${y}" class="info">
       <tspan x="565" fill="${theme.blue}">${esc(label)}</tspan>
@@ -134,8 +240,17 @@ function render(config: Config, featuredStars: number, theme: Theme) {
       <tspan x="675" fill="${theme.fg}">${esc(value)}</tspan>
     </text>`;
 
-  const stackLines = config.stack
-    .map((item, index) => line(390 + index * 38, index === 0 ? "stack" : "", item))
+  const stackTiles = stackIcons
+    .map((icon, index) => {
+      const x = 565 + (index % 8) * 64;
+      const y = 396 + Math.floor(index / 8) * 66;
+
+      return `<g role="img" aria-label="${esc(icon.label)}">
+        <title>${esc(icon.label)}</title>
+        <rect x="${x}" y="${y}" width="48" height="48" rx="10" fill="${theme.titlebar}" stroke="${theme.border}"/>
+        ${inlineIcon(icon, theme, x + 8, y + 8, 32)}
+      </g>`;
+    })
     .join("");
 
   const portraitLines = asciiPortrait
@@ -181,7 +296,9 @@ function render(config: Config, featuredStars: number, theme: Theme) {
   ${line(250, "uptime", config.experience)}
   ${line(292, "location", config.location)}
   ${line(334, "focus", config.focus)}
-  ${stackLines}
+  <text x="565" y="376" class="info" fill="${theme.blue}">stack</text>
+  <line x1="625" y1="371" x2="1085" y2="371" stroke="${theme.border}"/>
+  ${stackTiles}
 
   <rect x="535" y="545" width="573" height="155" rx="10" fill="${theme.titlebar}" stroke="${theme.border}"/>
   <text x="560" y="580" class="small" fill="${theme.green}">$ open ~/projects/${esc(config.featured.repo)}</text>
@@ -208,16 +325,18 @@ async function main() {
     console.warn("Could not refresh the featured project stars; generating with zero.", error);
   }
 
+  const stackIcons = await loadStackIcons(config);
+
   await mkdir(new URL("../assets/", import.meta.url), { recursive: true });
 
   await Promise.all([
     writeFile(
       new URL("../assets/terminal-dark.svg", import.meta.url),
-      render(config, featuredStars, themes.dark)
+      render(config, featuredStars, stackIcons, themes.dark)
     ),
     writeFile(
       new URL("../assets/terminal-light.svg", import.meta.url),
-      render(config, featuredStars, themes.light)
+      render(config, featuredStars, stackIcons, themes.light)
     )
   ]);
 }
