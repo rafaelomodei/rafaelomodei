@@ -16,14 +16,8 @@ type Config = {
   };
 };
 
-type GitHubUser = {
-  public_repos: number;
-  followers: number;
-};
-
 type GitHubRepo = {
   stargazers_count: number;
-  fork: boolean;
 };
 
 type Theme = {
@@ -66,13 +60,39 @@ const themes: Record<"dark" | "light", Theme> = {
   }
 };
 
-const ascii = [
-  "██████╗   ██████╗ ",
-  "██╔══██╗ ██╔═══██╗",
-  "██████╔╝ ██║   ██║",
-  "██╔══██╗ ██║   ██║",
-  "██║  ██║ ╚██████╔╝",
-  "╚═╝  ╚═╝  ╚═════╝ "
+// Generated from Rafael's GitHub profile portrait (September 2026).
+const asciiPortrait = [
+  "       ,:::::;;:::::,",
+  "      .iiiiri;:.",
+  "      :iii;i;,.",
+  "      iii:;;.              .",
+  `     ,ii: ;:.;irrrr;:,,.   .,`,
+  "     ;r;..i5MHM3555522Xs;   :",
+  "    .rr:::5SGGHh555522Xsr;. ,:",
+  "    :rr;iAMHHHHM3333552Xri: .i.",
+  "    ;rr;XHGHHMHHHMhMM32AXi; ,i,",
+  "    ;riiAGHGH5AX5MH5Asirri:.:i,",
+  "    ;X2iAGHGMhi:i5Gs;r2i.:i:,i:",
+  "    i5GHhHHHHMXr2HHX;rXXiisi.;:",
+  "    i2G3MGHHHM3MGGH5r;AA22A;.;:",
+  "    :rH53GHHHHMhHHGhXiX52As:.i:",
+  "    .iXShMGHHHMhH3H5isA32sr,,r,",
+  "     ;rX2ASHHGh33sAX;;isAs; :i",
+  "     .rrii5HGGir35Xsr;;:ri  ;:",
+  "      ,rs;:rh3hHHHAXAssX:   i",
+  "       .ir.,ir5SGMAiAXXi   ;,",
+  "         ;i,.,:sXAr,:;:   :i",
+  "         .i25,   .       :sX;",
+  "       .;ri3Gh2i,      .;X5A",
+  "     .;rsr;hh5GSMArirrsA53A.",
+  "   ,irr;:::hGMA23hHGGHHMM2",
+  ",;iri:..,::MHGH2hGHHHHMH3.",
+  "i;:,,.,:,::GGMHGGGGHHHHM,",
+  "...,,.,.,,ihhGHHHHHHGHH:",
+  ".,:,,XMM2 :3GGHGhMHHHGr .",
+  ".:;:iSGS3 Ah5MG5iMSMGA .",
+  ",:;;iMHGXiGH2XssXXMSh",
+  ",:;;::AGMA2SMXi;XXs2."
 ];
 
 const esc = (value: string | number) =>
@@ -99,75 +119,47 @@ async function github<T>(path: string): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-async function loadStats(config: Config) {
-  const user = await github<GitHubUser>(`/users/${config.username}`);
-  const repos: GitHubRepo[] = [];
-
-  for (let page = 1; ; page += 1) {
-    const batch = await github<GitHubRepo[]>(
-      `/users/${config.username}/repos?type=owner&per_page=100&page=${page}`
-    );
-    repos.push(...batch);
-    if (batch.length < 100) break;
-  }
-
+async function loadFeaturedStars(config: Config) {
   const featured = await github<GitHubRepo>(
     `/repos/${config.username}/${config.featured.repo}`
   );
-
-  return {
-    repos: user.public_repos,
-    followers: user.followers,
-    stars: repos
-      .filter((repo) => !repo.fork)
-      .reduce((sum, repo) => sum + repo.stargazers_count, 0),
-    featuredStars: featured.stargazers_count
-  };
+  return featured.stargazers_count;
 }
 
-function render(
-  config: Config,
-  stats: { repos: number; followers: number; stars: number; featuredStars: number },
-  theme: Theme
-) {
-  const line = (
-    x: number,
-    y: number,
-    label: string,
-    value: string,
-    valueColor = theme.fg
-  ) => `
-    <text x="${x}" y="${y}" class="line">
-      <tspan fill="${theme.blue}">${esc(label)}</tspan>
-      <tspan fill="${theme.dim}">: </tspan>
-      <tspan fill="${valueColor}">${esc(value)}</tspan>
+function render(config: Config, featuredStars: number, theme: Theme) {
+  const line = (y: number, label: string, value: string) => `
+    <text y="${y}" class="info">
+      <tspan x="565" fill="${theme.blue}">${esc(label)}</tspan>
+      <tspan x="655" fill="${theme.dim}">${label ? ":" : ""}</tspan>
+      <tspan x="675" fill="${theme.fg}">${esc(value)}</tspan>
     </text>`;
 
   const stackLines = config.stack
-    .map((item, index) => line(565, 300 + index * 28, index === 0 ? "stack" : "     ", item))
+    .map((item, index) => line(390 + index * 38, index === 0 ? "stack" : "", item))
     .join("");
 
-  const asciiLines = ascii
+  const portraitLines = asciiPortrait
     .map(
       (item, index) =>
-        `<text x="92" y="${215 + index * 36}" class="ascii" fill="${theme.green}">${esc(item)}</text>`
+        `<text x="76" y="${174 + index * 14}" class="portrait" fill="${theme.green}">${esc(item)}</text>`
     )
     .join("");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none"
+<svg width="1200" height="780" viewBox="0 0 1200 780" fill="none"
   xmlns="http://www.w3.org/2000/svg" role="img"
-  aria-label="${esc(config.name)} — terminal GitHub profile">
+  aria-label="${esc(config.name)} — terminal GitHub profile with ASCII portrait">
   <style>
     .line { font: 18px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .info { font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
     .small { font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
-    .ascii { font: 25px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-weight: 700; }
+    .portrait { font: 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-weight: 700; white-space: pre; }
     .project { font: 21px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-weight: 700; }
   </style>
 
-  <rect width="1200" height="720" rx="18" fill="${theme.bg}"/>
-  <rect x="31" y="31" width="1138" height="658" rx="14" fill="${theme.shadow}"/>
-  <rect x="27" y="27" width="1138" height="658" rx="14" fill="${theme.panel}" stroke="${theme.border}"/>
+  <rect width="1200" height="780" rx="18" fill="${theme.bg}"/>
+  <rect x="31" y="31" width="1138" height="718" rx="14" fill="${theme.shadow}"/>
+  <rect x="27" y="27" width="1138" height="718" rx="14" fill="${theme.panel}" stroke="${theme.border}"/>
   <path d="M27 41C27 33.268 33.268 27 41 27H1151C1158.73 27 1165 33.268 1165 41V79H27V41Z" fill="${theme.titlebar}"/>
   <line x1="27" y1="79.5" x2="1165" y2="79.5" stroke="${theme.border}"/>
 
@@ -178,36 +170,29 @@ function render(
 
   <text x="76" y="127" class="line" fill="${theme.green}">$ fastfetch</text>
 
-  ${asciiLines}
-  <text x="92" y="458" class="line" fill="${theme.fg}">${esc(config.username)}@github</text>
-  <text x="92" y="486" class="small" fill="${theme.dim}">build / automate / ship</text>
+  ${portraitLines}
+  <text x="92" y="632" class="line" fill="${theme.fg}">${esc(config.username)}@github</text>
+  <text x="92" y="662" class="small" fill="${theme.dim}">build / automate / ship</text>
 
   <text x="565" y="144" class="project" fill="${theme.green}">${esc(config.name)}</text>
-  <line x1="565" y1="158" x2="1085" y2="158" stroke="${theme.border}"/>
+  <line x1="565" y1="160" x2="1085" y2="160" stroke="${theme.border}"/>
 
-  ${line(565, 194, "role", config.role)}
-  ${line(565, 222, "uptime", config.experience)}
-  ${line(565, 250, "location", config.location)}
-  ${line(565, 278, "focus", config.focus)}
+  ${line(208, "role", config.role)}
+  ${line(250, "uptime", config.experience)}
+  ${line(292, "location", config.location)}
+  ${line(334, "focus", config.focus)}
   ${stackLines}
 
-  <text x="76" y="548" class="line" fill="${theme.green}">$ github --stats</text>
-  <text x="76" y="579" class="small" fill="${theme.dim}">
-    repos <tspan fill="${theme.fg}">${stats.repos}</tspan>
-    <tspan>  |  followers </tspan><tspan fill="${theme.fg}">${stats.followers}</tspan>
-    <tspan>  |  stars received </tspan><tspan fill="${theme.fg}">${stats.stars}</tspan>
-  </text>
+  <rect x="535" y="545" width="573" height="155" rx="10" fill="${theme.titlebar}" stroke="${theme.border}"/>
+  <text x="560" y="580" class="small" fill="${theme.green}">$ open ~/projects/${esc(config.featured.repo)}</text>
+  <text x="560" y="615" class="project" fill="${theme.orange}">${esc(config.featured.title)}</text>
+  <text x="1080" y="615" text-anchor="end" class="small" fill="${theme.dim}">★ ${featuredStars}</text>
+  <text x="560" y="646" class="line" fill="${theme.fg}">${esc(config.featured.tagline)}</text>
+  <text x="560" y="675" class="small" fill="${theme.dim}">Open-source Blender add-on for model splitting,</text>
+  <text x="560" y="691" class="small" fill="${theme.dim}">custom connectors and 3D-print-ready parts.</text>
 
-  <rect x="545" y="430" width="563" height="178" rx="10" fill="${theme.titlebar}" stroke="${theme.border}"/>
-  <text x="570" y="465" class="small" fill="${theme.green}">$ open ~/projects/${esc(config.featured.repo)}</text>
-  <text x="570" y="500" class="project" fill="${theme.orange}">${esc(config.featured.title)}</text>
-  <text x="1035" y="500" text-anchor="end" class="small" fill="${theme.dim}">★ ${stats.featuredStars}</text>
-  <text x="570" y="531" class="line" fill="${theme.fg}">${esc(config.featured.tagline)}</text>
-  <text x="570" y="560" class="small" fill="${theme.dim}">Open-source Blender add-on for non-destructive</text>
-  <text x="570" y="584" class="small" fill="${theme.dim}">model splitting, connectors and 3D-print-ready parts.</text>
-
-  <text x="76" y="645" class="line" fill="${theme.green}">${esc(config.username)}@github:~$</text>
-  <rect x="287" y="628" width="11" height="20" rx="1" fill="${theme.fg}"/>
+  <text x="76" y="714" class="line" fill="${theme.green}">${esc(config.username)}@github:~$</text>
+  <rect x="287" y="697" width="11" height="20" rx="1" fill="${theme.fg}"/>
 </svg>`;
 }
 
@@ -216,12 +201,11 @@ async function main() {
     await readFile(new URL("../profile.config.json", import.meta.url), "utf8")
   ) as Config;
 
-  let stats = { repos: 0, followers: 0, stars: 0, featuredStars: 0 };
-
+  let featuredStars = 0;
   try {
-    stats = await loadStats(config);
+    featuredStars = await loadFeaturedStars(config);
   } catch (error) {
-    console.warn("Could not refresh GitHub stats; generating layout with zeros.", error);
+    console.warn("Could not refresh the featured project stars; generating with zero.", error);
   }
 
   await mkdir(new URL("../assets/", import.meta.url), { recursive: true });
@@ -229,11 +213,11 @@ async function main() {
   await Promise.all([
     writeFile(
       new URL("../assets/terminal-dark.svg", import.meta.url),
-      render(config, stats, themes.dark)
+      render(config, featuredStars, themes.dark)
     ),
     writeFile(
       new URL("../assets/terminal-light.svg", import.meta.url),
-      render(config, stats, themes.light)
+      render(config, featuredStars, themes.light)
     )
   ]);
 }

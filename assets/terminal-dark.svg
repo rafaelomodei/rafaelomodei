@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none"
+<svg width="1200" height="780" viewBox="0 0 1200 780" fill="none"
   xmlns="http://www.w3.org/2000/svg" role="img"
-  aria-label="Rafael Omodei — terminal GitHub profile">
+  aria-label="Rafael Omodei — terminal GitHub profile with ASCII portrait">
   <style>
     .line { font: 18px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .info { font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
     .small { font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
-    .ascii { font: 25px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-weight: 700; }
+    .portrait { font: 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-weight: 700; white-space: pre; }
     .project { font: 21px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-weight: 700; }
   </style>
 
-  <rect width="1200" height="720" rx="18" fill="#0d1117"/>
-  <rect x="31" y="31" width="1138" height="658" rx="14" fill="#00000055"/>
-  <rect x="27" y="27" width="1138" height="658" rx="14" fill="#010409" stroke="#30363d"/>
+  <rect width="1200" height="780" rx="18" fill="#0d1117"/>
+  <rect x="31" y="31" width="1138" height="718" rx="14" fill="#00000055"/>
+  <rect x="27" y="27" width="1138" height="718" rx="14" fill="#010409" stroke="#30363d"/>
   <path d="M27 41C27 33.268 33.268 27 41 27H1151C1158.73 27 1165 33.268 1165 41V79H27V41Z" fill="#161b22"/>
   <line x1="27" y1="79.5" x2="1165" y2="79.5" stroke="#30363d"/>
 
@@ -22,74 +23,67 @@
 
   <text x="76" y="127" class="line" fill="#3fb950">$ fastfetch</text>
 
-  <text x="92" y="215" class="ascii" fill="#3fb950">██████╗   ██████╗ </text><text x="92" y="251" class="ascii" fill="#3fb950">██╔══██╗ ██╔═══██╗</text><text x="92" y="287" class="ascii" fill="#3fb950">██████╔╝ ██║   ██║</text><text x="92" y="323" class="ascii" fill="#3fb950">██╔══██╗ ██║   ██║</text><text x="92" y="359" class="ascii" fill="#3fb950">██║  ██║ ╚██████╔╝</text><text x="92" y="395" class="ascii" fill="#3fb950">╚═╝  ╚═╝  ╚═════╝ </text>
-  <text x="92" y="458" class="line" fill="#c9d1d9">rafaelomodei@github</text>
-  <text x="92" y="486" class="small" fill="#8b949e">build / automate / ship</text>
+  <text x="76" y="174" class="portrait" fill="#3fb950">       ,:::::;;:::::,</text><text x="76" y="188" class="portrait" fill="#3fb950">      .iiiiri;:.</text><text x="76" y="202" class="portrait" fill="#3fb950">      :iii;i;,.</text><text x="76" y="216" class="portrait" fill="#3fb950">      iii:;;.              .</text><text x="76" y="230" class="portrait" fill="#3fb950">     ,ii: ;:.;irrrr;:,,.   .,</text><text x="76" y="244" class="portrait" fill="#3fb950">     ;r;..i5MHM3555522Xs;   :</text><text x="76" y="258" class="portrait" fill="#3fb950">    .rr:::5SGGHh555522Xsr;. ,:</text><text x="76" y="272" class="portrait" fill="#3fb950">    :rr;iAMHHHHM3333552Xri: .i.</text><text x="76" y="286" class="portrait" fill="#3fb950">    ;rr;XHGHHMHHHMhMM32AXi; ,i,</text><text x="76" y="300" class="portrait" fill="#3fb950">    ;riiAGHGH5AX5MH5Asirri:.:i,</text><text x="76" y="314" class="portrait" fill="#3fb950">    ;X2iAGHGMhi:i5Gs;r2i.:i:,i:</text><text x="76" y="328" class="portrait" fill="#3fb950">    i5GHhHHHHMXr2HHX;rXXiisi.;:</text><text x="76" y="342" class="portrait" fill="#3fb950">    i2G3MGHHHM3MGGH5r;AA22A;.;:</text><text x="76" y="356" class="portrait" fill="#3fb950">    :rH53GHHHHMhHHGhXiX52As:.i:</text><text x="76" y="370" class="portrait" fill="#3fb950">    .iXShMGHHHMhH3H5isA32sr,,r,</text><text x="76" y="384" class="portrait" fill="#3fb950">     ;rX2ASHHGh33sAX;;isAs; :i</text><text x="76" y="398" class="portrait" fill="#3fb950">     .rrii5HGGir35Xsr;;:ri  ;:</text><text x="76" y="412" class="portrait" fill="#3fb950">      ,rs;:rh3hHHHAXAssX:   i</text><text x="76" y="426" class="portrait" fill="#3fb950">       .ir.,ir5SGMAiAXXi   ;,</text><text x="76" y="440" class="portrait" fill="#3fb950">         ;i,.,:sXAr,:;:   :i</text><text x="76" y="454" class="portrait" fill="#3fb950">         .i25,   .       :sX;</text><text x="76" y="468" class="portrait" fill="#3fb950">       .;ri3Gh2i,      .;X5A</text><text x="76" y="482" class="portrait" fill="#3fb950">     .;rsr;hh5GSMArirrsA53A.</text><text x="76" y="496" class="portrait" fill="#3fb950">   ,irr;:::hGMA23hHGGHHMM2</text><text x="76" y="510" class="portrait" fill="#3fb950">,;iri:..,::MHGH2hGHHHHMH3.</text><text x="76" y="524" class="portrait" fill="#3fb950">i;:,,.,:,::GGMHGGGGHHHHM,</text><text x="76" y="538" class="portrait" fill="#3fb950">...,,.,.,,ihhGHHHHHHGHH:</text><text x="76" y="552" class="portrait" fill="#3fb950">.,:,,XMM2 :3GGHGhMHHHGr .</text><text x="76" y="566" class="portrait" fill="#3fb950">.:;:iSGS3 Ah5MG5iMSMGA .</text><text x="76" y="580" class="portrait" fill="#3fb950">,:;;iMHGXiGH2XssXXMSh</text><text x="76" y="594" class="portrait" fill="#3fb950">,:;;::AGMA2SMXi;XXs2.</text>
+  <text x="92" y="632" class="line" fill="#c9d1d9">rafaelomodei@github</text>
+  <text x="92" y="662" class="small" fill="#8b949e">build / automate / ship</text>
 
   <text x="565" y="144" class="project" fill="#3fb950">Rafael Omodei</text>
-  <line x1="565" y1="158" x2="1085" y2="158" stroke="#30363d"/>
+  <line x1="565" y1="160" x2="1085" y2="160" stroke="#30363d"/>
 
   
-    <text x="565" y="194" class="line">
-      <tspan fill="#58a6ff">role</tspan>
-      <tspan fill="#8b949e">: </tspan>
-      <tspan fill="#c9d1d9">Senior Full Stack Software Engineer</tspan>
+    <text y="208" class="info">
+      <tspan x="565" fill="#58a6ff">role</tspan>
+      <tspan x="655" fill="#8b949e">:</tspan>
+      <tspan x="675" fill="#c9d1d9">Senior Full Stack Software Engineer</tspan>
     </text>
   
-    <text x="565" y="222" class="line">
-      <tspan fill="#58a6ff">uptime</tspan>
-      <tspan fill="#8b949e">: </tspan>
-      <tspan fill="#c9d1d9">6+ years</tspan>
+    <text y="250" class="info">
+      <tspan x="565" fill="#58a6ff">uptime</tspan>
+      <tspan x="655" fill="#8b949e">:</tspan>
+      <tspan x="675" fill="#c9d1d9">6+ years</tspan>
     </text>
   
-    <text x="565" y="250" class="line">
-      <tspan fill="#58a6ff">location</tspan>
-      <tspan fill="#8b949e">: </tspan>
-      <tspan fill="#c9d1d9">Brazil / Remote</tspan>
+    <text y="292" class="info">
+      <tspan x="565" fill="#58a6ff">location</tspan>
+      <tspan x="655" fill="#8b949e">:</tspan>
+      <tspan x="675" fill="#c9d1d9">Brazil / Remote</tspan>
     </text>
   
-    <text x="565" y="278" class="line">
-      <tspan fill="#58a6ff">focus</tspan>
-      <tspan fill="#8b949e">: </tspan>
-      <tspan fill="#c9d1d9">Web platforms, APIs, automation and integrations</tspan>
+    <text y="334" class="info">
+      <tspan x="565" fill="#58a6ff">focus</tspan>
+      <tspan x="655" fill="#8b949e">:</tspan>
+      <tspan x="675" fill="#c9d1d9">Web platforms, APIs, automation and integrations</tspan>
     </text>
   
-    <text x="565" y="300" class="line">
-      <tspan fill="#58a6ff">stack</tspan>
-      <tspan fill="#8b949e">: </tspan>
-      <tspan fill="#c9d1d9">React / Next.js / TypeScript</tspan>
+    <text y="390" class="info">
+      <tspan x="565" fill="#58a6ff">stack</tspan>
+      <tspan x="655" fill="#8b949e">:</tspan>
+      <tspan x="675" fill="#c9d1d9">React / Next.js / TypeScript</tspan>
     </text>
-    <text x="565" y="328" class="line">
-      <tspan fill="#58a6ff">     </tspan>
-      <tspan fill="#8b949e">: </tspan>
-      <tspan fill="#c9d1d9">Node.js / NestJS / Java / Spring Boot</tspan>
+    <text y="428" class="info">
+      <tspan x="565" fill="#58a6ff"></tspan>
+      <tspan x="655" fill="#8b949e"></tspan>
+      <tspan x="675" fill="#c9d1d9">Node.js / NestJS / Java / Spring Boot</tspan>
     </text>
-    <text x="565" y="356" class="line">
-      <tspan fill="#58a6ff">     </tspan>
-      <tspan fill="#8b949e">: </tspan>
-      <tspan fill="#c9d1d9">Python / C++ / PostgreSQL / MongoDB</tspan>
+    <text y="466" class="info">
+      <tspan x="565" fill="#58a6ff"></tspan>
+      <tspan x="655" fill="#8b949e"></tspan>
+      <tspan x="675" fill="#c9d1d9">Python / C++ / PostgreSQL / MongoDB</tspan>
     </text>
-    <text x="565" y="384" class="line">
-      <tspan fill="#58a6ff">     </tspan>
-      <tspan fill="#8b949e">: </tspan>
-      <tspan fill="#c9d1d9">AWS / GCP / Playwright / n8n</tspan>
+    <text y="504" class="info">
+      <tspan x="565" fill="#58a6ff"></tspan>
+      <tspan x="655" fill="#8b949e"></tspan>
+      <tspan x="675" fill="#c9d1d9">AWS / GCP / Playwright / n8n</tspan>
     </text>
 
-  <text x="76" y="548" class="line" fill="#3fb950">$ github --stats</text>
-  <text x="76" y="579" class="small" fill="#8b949e">
-    repos <tspan fill="#c9d1d9">62</tspan>
-    <tspan>  |  followers </tspan><tspan fill="#c9d1d9">14</tspan>
-    <tspan>  |  stars received </tspan><tspan fill="#c9d1d9">20</tspan>
-  </text>
+  <rect x="535" y="545" width="573" height="155" rx="10" fill="#161b22" stroke="#30363d"/>
+  <text x="560" y="580" class="small" fill="#3fb950">$ open ~/projects/easySlicePrint</text>
+  <text x="560" y="615" class="project" fill="#f0883e">EasySlice Print</text>
+  <text x="1080" y="615" text-anchor="end" class="small" fill="#8b949e">★ 2</text>
+  <text x="560" y="646" class="line" fill="#c9d1d9">Cut. Connect. Print.</text>
+  <text x="560" y="675" class="small" fill="#8b949e">Open-source Blender add-on for model splitting,</text>
+  <text x="560" y="691" class="small" fill="#8b949e">custom connectors and 3D-print-ready parts.</text>
 
-  <rect x="545" y="430" width="563" height="178" rx="10" fill="#161b22" stroke="#30363d"/>
-  <text x="570" y="465" class="small" fill="#3fb950">$ open ~/projects/easySlicePrint</text>
-  <text x="570" y="500" class="project" fill="#f0883e">EasySlice Print</text>
-  <text x="1035" y="500" text-anchor="end" class="small" fill="#8b949e">★ 2</text>
-  <text x="570" y="531" class="line" fill="#c9d1d9">Cut. Connect. Print.</text>
-  <text x="570" y="560" class="small" fill="#8b949e">Open-source Blender add-on for non-destructive</text>
-  <text x="570" y="584" class="small" fill="#8b949e">model splitting, connectors and 3D-print-ready parts.</text>
-
-  <text x="76" y="645" class="line" fill="#3fb950">rafaelomodei@github:~$</text>
-  <rect x="287" y="628" width="11" height="20" rx="1" fill="#c9d1d9"/>
+  <text x="76" y="714" class="line" fill="#3fb950">rafaelomodei@github:~$</text>
+  <rect x="287" y="697" width="11" height="20" rx="1" fill="#c9d1d9"/>
 </svg>
