@@ -124,7 +124,7 @@
   <rect x="535" y="545" width="573" height="155" rx="10" fill="#eaeef2" stroke="#d0d7de"/>
   <text x="560" y="580" class="small" fill="#1a7f37">$ open ~/projects/easySlicePrint</text>
   <text x="560" y="615" class="project" fill="#bc4c00">EasySlice Print</text>
-  <text x="1080" y="615" text-anchor="end" class="small" fill="#57606a">★ 2</text>
+  <text x="1080" y="615" text-anchor="end" class="small" fill="#57606a">★ 3</text>
   <text x="560" y="646" class="line" fill="#24292f">Cut. Connect. Print.</text>
   <text x="560" y="675" class="small" fill="#57606a">Open-source Blender add-on for model splitting,</text>
   <text x="560" y="691" class="small" fill="#57606a">custom connectors and 3D-print-ready parts.</text>
