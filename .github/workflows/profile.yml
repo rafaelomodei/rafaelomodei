@@ -1,4 +1,4 @@
-name: Generate terminal profile
+name: Generate hacker profile
 
 on:
   workflow_dispatch:
@@ -36,13 +36,13 @@ jobs:
 
       - name: Commit generated profile
         run: |
-          if git diff --quiet -- assets/terminal-dark.svg assets/terminal-light.svg; then
+          if git diff --quiet -- assets/hacker-profile.svg; then
             echo "Profile is already up to date."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/terminal-dark.svg assets/terminal-light.svg
-          git commit -m "chore: refresh terminal profile"
+          git add assets/hacker-profile.svg
+          git commit -m "chore: refresh hacker profile"
           git push
