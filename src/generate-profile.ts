@@ -27,115 +27,39 @@ type StackIconAsset = {
   id: string;
   label: string;
   svg: string;
-  kind: "simple" | "devicon";
-  color?: string;
 };
 
-type Theme = {
-  bg: string;
-  panel: string;
-  border: string;
-  titlebar: string;
-  fg: string;
-  dim: string;
-  green: string;
-  blue: string;
-  orange: string;
-  shadow: string;
-};
-
-const themes: Record<"dark" | "light", Theme> = {
-  dark: {
-    bg: "#0d1117",
-    panel: "#010409",
-    border: "#30363d",
-    titlebar: "#161b22",
-    fg: "#c9d1d9",
-    dim: "#8b949e",
-    green: "#3fb950",
-    blue: "#58a6ff",
-    orange: "#f0883e",
-    shadow: "#00000055"
-  },
-  light: {
-    bg: "#ffffff",
-    panel: "#f6f8fa",
-    border: "#d0d7de",
-    titlebar: "#eaeef2",
-    fg: "#24292f",
-    dim: "#57606a",
-    green: "#1a7f37",
-    blue: "#0969da",
-    orange: "#bc4c00",
-    shadow: "#1f23281f"
-  }
-};
-
+const ACCENT = "#00FF88";
 const SIMPLE_ICONS_REF = "5d5d4d1d28cbb00b21770bb69d8112da52211a95";
 const DEVICON_REF = "7330accdbc47e2dc0c19789a48533c4a3c50fe58";
 
 const stackIconSources: Record<
   string,
-  | { kind: "simple"; slug: string; color: string }
+  | { kind: "simple"; slug: string }
   | { kind: "devicon"; path: string }
 > = {
-  react: { kind: "simple", slug: "react", color: "#61DAFB" },
-  nextjs: { kind: "simple", slug: "nextdotjs", color: "theme" },
-  typescript: { kind: "simple", slug: "typescript", color: "#3178C6" },
-  nodejs: { kind: "simple", slug: "nodedotjs", color: "#5FA04E" },
-  nestjs: { kind: "simple", slug: "nestjs", color: "#E0234E" },
-  java: { kind: "simple", slug: "openjdk", color: "#ED8B00" },
-  springboot: { kind: "simple", slug: "springboot", color: "#6DB33F" },
-  python: { kind: "simple", slug: "python", color: "#3776AB" },
-  cplusplus: { kind: "simple", slug: "cplusplus", color: "#00599C" },
-  postgresql: { kind: "simple", slug: "postgresql", color: "#4169E1" },
-  mongodb: { kind: "simple", slug: "mongodb", color: "#47A248" },
+  react: { kind: "simple", slug: "react" },
+  nextjs: { kind: "simple", slug: "nextdotjs" },
+  typescript: { kind: "simple", slug: "typescript" },
+  nodejs: { kind: "simple", slug: "nodedotjs" },
+  nestjs: { kind: "simple", slug: "nestjs" },
+  java: { kind: "simple", slug: "openjdk" },
+  springboot: { kind: "simple", slug: "springboot" },
+  python: { kind: "simple", slug: "python" },
+  cplusplus: { kind: "simple", slug: "cplusplus" },
+  postgresql: { kind: "simple", slug: "postgresql" },
+  mongodb: { kind: "simple", slug: "mongodb" },
   aws: {
     kind: "devicon",
     path: "icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
   },
-  googlecloud: { kind: "simple", slug: "googlecloud", color: "#4285F4" },
+  googlecloud: { kind: "simple", slug: "googlecloud" },
   playwright: {
     kind: "devicon",
     path: "icons/playwright/playwright-original.svg"
   },
-  n8n: { kind: "simple", slug: "n8n", color: "#EA4B71" }
+  n8n: { kind: "simple", slug: "n8n" }
 };
-
-// Generated from Rafael's GitHub profile portrait (September 2026).
-const asciiPortrait = [
-  "       ,:::::;;:::::,",
-  "      .iiiiri;:.",
-  "      :iii;i;,.",
-  "      iii:;;.              .",
-  `     ,ii: ;:.;irrrr;:,,.   .,`,
-  "     ;r;..i5MHM3555522Xs;   :",
-  "    .rr:::5SGGHh555522Xsr;. ,:",
-  "    :rr;iAMHHHHM3333552Xri: .i.",
-  "    ;rr;XHGHHMHHHMhMM32AXi; ,i,",
-  "    ;riiAGHGH5AX5MH5Asirri:.:i,",
-  "    ;X2iAGHGMhi:i5Gs;r2i.:i:,i:",
-  "    i5GHhHHHHMXr2HHX;rXXiisi.;:",
-  "    i2G3MGHHHM3MGGH5r;AA22A;.;:",
-  "    :rH53GHHHHMhHHGhXiX52As:.i:",
-  "    .iXShMGHHHMhH3H5isA32sr,,r,",
-  "     ;rX2ASHHGh33sAX;;isAs; :i",
-  "     .rrii5HGGir35Xsr;;:ri  ;:",
-  "      ,rs;:rh3hHHHAXAssX:   i",
-  "       .ir.,ir5SGMAiAXXi   ;,",
-  "         ;i,.,:sXAr,:;:   :i",
-  "         .i25,   .       :sX;",
-  "       .;ri3Gh2i,      .;X5A",
-  "     .;rsr;hh5GSMArirrsA53A.",
-  "   ,irr;:::hGMA23hHGGHHMM2",
-  ",;iri:..,::MHGH2hGHHHHMH3.",
-  "i;:,,.,:,::GGMHGGGGHHHHM,",
-  "...,,.,.,,ihhGHHHHHHGHH:",
-  ".,:,,XMM2 :3GGHGhMHHHGr .",
-  ".:;:iSGS3 Ah5MG5iMSMGA .",
-  ",:;;iMHGXiGH2XssXXMSh",
-  ",:;;::AGMA2SMXi;XXs2."
-];
 
 const esc = (value: string | number) =>
   String(value)
@@ -184,132 +108,241 @@ async function loadStackIcons(config: Config): Promise<StackIconAsset[]> {
         throw new Error(`Could not load ${label} icon (${response.status})`);
       }
 
-      return {
-        id,
-        label,
-        svg: await response.text(),
-        kind: source.kind,
-        ...(source.kind === "simple" ? { color: source.color } : {})
-      };
+      return { id, label, svg: await response.text() };
     })
   );
 }
 
-function inlineIcon(
-  icon: StackIconAsset,
-  theme: Theme,
-  x: number,
-  y: number,
-  size: number
-) {
-  let svg = icon.svg;
+function iconSymbol(icon: StackIconAsset) {
+  const openingTag = icon.svg.match(/<svg\b[^>]*>/)?.[0];
+  const closingTagIndex = icon.svg.lastIndexOf("</svg>");
 
-  if (icon.id === "aws") {
-    svg = svg.replaceAll("#252f3e", theme.fg);
-  } else if (icon.id === "playwright" && theme.bg === themes.dark.bg) {
-    svg = svg.replaceAll("#2D4552", theme.fg);
-  }
-
-  const openingTag = svg.match(/<svg\b[^>]*>/)?.[0];
-  const closingTagIndex = svg.lastIndexOf("</svg>");
   if (!openingTag || closingTagIndex < 0) {
     throw new Error(`Invalid SVG for ${icon.label}`);
   }
 
   const viewBox = openingTag.match(/viewBox="([^"]+)"/)?.[1] ?? "0 0 24 24";
-  let body = svg.slice(svg.indexOf(openingTag) + openingTag.length, closingTagIndex);
+  let body = icon.svg.slice(
+    icon.svg.indexOf(openingTag) + openingTag.length,
+    closingTagIndex
+  );
 
-  if (icon.kind === "simple") {
-    const color = icon.color === "theme" ? theme.fg : icon.color;
-    body = `<g fill="${color}">${body}</g>`;
+  body = body
+    .replace(/<title>[\s\S]*?<\/title>/g, "")
+    .replace(/fill="(?!none|currentColor)[^"]+"/g, 'fill="currentColor"')
+    .replace(/stroke="(?!none|currentColor)[^"]+"/g, 'stroke="currentColor"');
+
+  return `<symbol id="tech-${esc(icon.id)}" viewBox="${esc(viewBox)}">
+    <g fill="currentColor">${body}</g>
+  </symbol>`;
+}
+
+function splitIntoLines(value: string, maxLength: number, maxLines: number) {
+  const words = value.trim().split(/\s+/);
+  const lines: string[] = [];
+
+  for (const word of words) {
+    const index = Math.max(0, lines.length - 1);
+    const candidate = lines[index] ? `${lines[index]} ${word}` : word;
+
+    if (candidate.length <= maxLength) {
+      lines[index] = candidate;
+    } else if (lines.length < maxLines) {
+      lines.push(word);
+    } else {
+      lines[index] = candidate;
+    }
   }
 
-  return `<svg x="${x}" y="${y}" width="${size}" height="${size}" viewBox="${viewBox}" aria-hidden="true">${body}</svg>`;
+  return lines.slice(0, maxLines);
+}
+
+function renderTechRain(stackIcons: StackIconAsset[]) {
+  const columns = [430, 484, 538, 592, 646, 700, 754];
+  const durations = [8.4, 10.1, 9.2, 11.2, 8.8, 10.6, 9.6];
+  const dropsPerColumn = 5;
+  let dropIndex = 0;
+
+  return columns
+    .map((x, columnIndex) => {
+      const duration = durations[columnIndex];
+
+      return Array.from({ length: dropsPerColumn }, (_, slotIndex) => {
+        const icon = stackIcons[dropIndex % stackIcons.length];
+        const size = 22 + ((columnIndex + slotIndex) % 3) * 2;
+        const delay = -(
+          (duration / dropsPerColumn) * slotIndex +
+          columnIndex * 0.47
+        );
+        const previewY =
+          24 + slotIndex * 82 + (columnIndex % 2 === 0 ? 0 : 38);
+        dropIndex += 1;
+
+        return `<g transform="translate(${x} 0)" aria-hidden="true">
+          <g class="tech-drop" transform="translate(0 ${previewY})"
+            style="animation-duration:${duration.toFixed(1)}s;animation-delay:${delay.toFixed(2)}s">
+            <use href="#tech-${esc(icon.id)}" x="${-size / 2}" y="${-size / 2}"
+              width="${size}" height="${size}"/>
+          </g>
+        </g>`;
+      }).join("");
+    })
+    .join("");
 }
 
 function render(
   config: Config,
   featuredStars: number,
-  stackIcons: StackIconAsset[],
-  theme: Theme
+  stackIcons: StackIconAsset[]
 ) {
-  const line = (y: number, label: string, value: string) => `
-    <text y="${y}" class="info">
-      <tspan x="565" fill="${theme.blue}">${esc(label)}</tspan>
-      <tspan x="655" fill="${theme.dim}">${label ? ":" : ""}</tspan>
-      <tspan x="675" fill="${theme.fg}">${esc(value)}</tspan>
-    </text>`;
-
-  const stackTiles = stackIcons
-    .map((icon, index) => {
-      const x = 565 + (index % 8) * 64;
-      const y = 396 + Math.floor(index / 8) * 66;
-
-      return `<g role="img" aria-label="${esc(icon.label)}">
-        <title>${esc(icon.label)}</title>
-        <rect x="${x}" y="${y}" width="48" height="48" rx="10" fill="${theme.titlebar}" stroke="${theme.border}"/>
-        ${inlineIcon(icon, theme, x + 8, y + 8, 32)}
-      </g>`;
-    })
-    .join("");
-
-  const portraitLines = asciiPortrait
-    .map(
-      (item, index) =>
-        `<text x="76" y="${174 + index * 14}" class="portrait" fill="${theme.green}">${esc(item)}</text>`
-    )
-    .join("");
+  const symbols = stackIcons.map(iconSymbol).join("\n");
+  const techRain = renderTechRain(stackIcons);
+  const profileDetail = `${config.experience.toUpperCase()} // ${config.focus}`;
+  const descriptionLines = splitIntoLines(
+    config.featured.description.toUpperCase(),
+    47,
+    2
+  );
+  const roleCursorX = Math.min(390, 48 + config.role.length * 9.1);
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="780" viewBox="0 0 1200 780" fill="none"
-  xmlns="http://www.w3.org/2000/svg" role="img"
-  aria-label="${esc(config.name)} — terminal GitHub profile with ASCII portrait">
-  <style>
-    .line { font: 18px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
-    .info { font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
-    .small { font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
-    .portrait { font: 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-weight: 700; white-space: pre; }
-    .project { font: 21px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-weight: 700; }
-  </style>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"
+  role="img" aria-labelledby="title description">
+  <title id="title">${esc(config.name)} — Senior Full-Stack Software Engineer</title>
+  <desc id="description">Animated hacker-style profile. Technology logos fall like Matrix rain beside a short profile and the ${esc(config.featured.title)} open-source project.</desc>
 
-  <rect width="1200" height="780" rx="18" fill="${theme.bg}"/>
-  <rect x="31" y="31" width="1138" height="718" rx="14" fill="${theme.shadow}"/>
-  <rect x="27" y="27" width="1138" height="718" rx="14" fill="${theme.panel}" stroke="${theme.border}"/>
-  <path d="M27 41C27 33.268 33.268 27 41 27H1151C1158.73 27 1165 33.268 1165 41V79H27V41Z" fill="${theme.titlebar}"/>
-  <line x1="27" y1="79.5" x2="1165" y2="79.5" stroke="${theme.border}"/>
+  <defs>
+    <style>
+      @keyframes techRain {
+        0%   { transform: translateY(-42px); opacity: 0; color: #ffffff; }
+        7%   { opacity: 1; color: #ffffff; filter: drop-shadow(0 0 5px ${ACCENT}); }
+        16%  { opacity: 0.92; color: ${ACCENT}; filter: drop-shadow(0 0 3px ${ACCENT}); }
+        68%  { opacity: 0.42; color: ${ACCENT}; filter: none; }
+        92%  { opacity: 0.16; color: ${ACCENT}; }
+        100% { transform: translateY(442px); opacity: 0; color: ${ACCENT}; }
+      }
+      @keyframes scan {
+        0%   { transform: translateY(-400px); opacity: 0.16; }
+        50%  { opacity: 0.28; }
+        100% { transform: translateY(800px); opacity: 0.16; }
+      }
+      @keyframes glitchMain {
+        0%,85%,100% { transform: translateX(0); opacity: 1; }
+        87% { transform: translateX(-4px); opacity: 0.86; fill: #ff0040; }
+        89% { transform: translateX(4px); opacity: 0.72; fill: #00ffff; }
+        91% { transform: translateX(-2px); opacity: 0.95; }
+        93% { transform: translateX(0); opacity: 1; }
+      }
+      @keyframes glitchGhost {
+        0%,84%,100% { opacity: 0; }
+        85% { opacity: 0.52; transform: translateX(5px); fill: #ff0040; }
+        88% { opacity: 0.34; transform: translateX(-5px); fill: #00ffff; }
+        91% { opacity: 0; }
+      }
+      @keyframes cursorBlink {
+        0%,49% { opacity: 1; }
+        50%,100% { opacity: 0; }
+      }
+      @keyframes cardIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes borderPulse {
+        0%,100% { opacity: 0.30; }
+        50% { opacity: 0.72; }
+      }
 
-  <circle cx="58" cy="53" r="7" fill="#ff5f57"/>
-  <circle cx="82" cy="53" r="7" fill="#febc2e"/>
-  <circle cx="106" cy="53" r="7" fill="#28c840"/>
-  <text x="146" y="59" class="small" fill="${theme.dim}">${esc(config.username)}@github: ~/profile</text>
+      .tech-drop {
+        color: ${ACCENT};
+        opacity: 0.46;
+        animation-name: techRain;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+      .scanline { animation: scan 2.8s linear 0.2s infinite; }
+      .glitch-main { animation: glitchMain 5s ease-in-out 0.3s infinite; }
+      .glitch-ghost { animation: glitchGhost 5s ease-in-out 0.8s infinite; }
+      .cursor { animation: cursorBlink 0.9s step-end infinite; }
+      .card { animation: cardIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards; }
+      .divider { animation: borderPulse 2.4s ease-in-out infinite; }
+      .label {
+        font: 10px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        letter-spacing: 0.22em;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      }
 
-  <text x="76" y="127" class="line" fill="${theme.green}">$ fastfetch</text>
+      @media (prefers-reduced-motion: reduce) {
+        .tech-drop, .scanline, .glitch-main, .glitch-ghost, .cursor, .card, .divider {
+          animation: none !important;
+        }
+        .tech-drop { opacity: 0.46; }
+        .glitch-ghost { opacity: 0; }
+      }
+    </style>
 
-  ${portraitLines}
-  <text x="92" y="632" class="line" fill="${theme.fg}">${esc(config.username)}@github</text>
-  <text x="92" y="662" class="small" fill="${theme.dim}">build / automate / ship</text>
+    <clipPath id="left-panel"><rect width="408" height="400"/></clipPath>
+    <clipPath id="right-panel"><rect x="408" width="392" height="400"/></clipPath>
+    <linearGradient id="scan-gradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="${ACCENT}" stop-opacity="0"/>
+      <stop offset="50%" stop-color="${ACCENT}" stop-opacity="1"/>
+      <stop offset="100%" stop-color="${ACCENT}" stop-opacity="0"/>
+    </linearGradient>
+    ${symbols}
+  </defs>
 
-  <text x="565" y="144" class="project" fill="${theme.green}">${esc(config.name)}</text>
-  <line x1="565" y1="160" x2="1085" y2="160" stroke="${theme.border}"/>
+  <g class="card">
+    <rect width="800" height="400" fill="#030303"/>
+    <rect x="408" width="392" height="400" fill="#010703" opacity="0.28"/>
+    <line x1="408" y1="0" x2="408" y2="400" stroke="${ACCENT}"
+      stroke-width="0.5" class="divider" opacity="0.35"/>
 
-  ${line(208, "role", config.role)}
-  ${line(250, "uptime", config.experience)}
-  ${line(292, "location", config.location)}
-  ${line(334, "focus", config.focus)}
-  <text x="565" y="376" class="info" fill="${theme.blue}">stack</text>
-  <line x1="625" y1="371" x2="1085" y2="371" stroke="${theme.border}"/>
-  ${stackTiles}
+    <g clip-path="url(#right-panel)" aria-label="Technology stack: ${esc(stackIcons.map(({ label }) => label).join(", "))}">
+      ${techRain}
+      <rect x="408" y="-8" width="392" height="8" fill="url(#scan-gradient)" class="scanline"/>
+      <path d="M772 14H792V34 M772 386H792V366" stroke="${ACCENT}"
+        stroke-width="1.5" fill="none" opacity="0.5"/>
+    </g>
 
-  <rect x="535" y="545" width="573" height="155" rx="10" fill="${theme.titlebar}" stroke="${theme.border}"/>
-  <text x="560" y="580" class="small" fill="${theme.green}">$ open ~/projects/${esc(config.featured.repo)}</text>
-  <text x="560" y="615" class="project" fill="${theme.orange}">${esc(config.featured.title)}</text>
-  <text x="1080" y="615" text-anchor="end" class="small" fill="${theme.dim}">★ ${featuredStars}</text>
-  <text x="560" y="646" class="line" fill="${theme.fg}">${esc(config.featured.tagline)}</text>
-  <text x="560" y="675" class="small" fill="${theme.dim}">Open-source Blender add-on for model splitting,</text>
-  <text x="560" y="691" class="small" fill="${theme.dim}">custom connectors and 3D-print-ready parts.</text>
+    <g clip-path="url(#left-panel)">
+      <path d="M20 44V20H44 M20 356V380H44" stroke="${ACCENT}"
+        stroke-width="1.5" fill="none" opacity="0.6"/>
 
-  <text x="76" y="714" class="line" fill="${theme.green}">${esc(config.username)}@github:~$</text>
-  <rect x="287" y="697" width="11" height="20" rx="1" fill="${theme.fg}"/>
+      <text x="48" y="58" class="label" fill="${ACCENT}" opacity="0.55">IDENT_USER</text>
+      <text x="48" y="108" class="mono glitch-ghost" font-size="32" font-weight="700"
+        fill="${ACCENT}" letter-spacing="-1">@${esc(config.username)}</text>
+      <text x="48" y="108" class="mono glitch-main" font-size="32" font-weight="700"
+        fill="${ACCENT}" letter-spacing="-1">@${esc(config.username)}</text>
+      <text x="48" y="108" class="mono" font-size="32" font-weight="700"
+        fill="${ACCENT}" letter-spacing="-1">@${esc(config.username)}</text>
+      <text x="48" y="160" class="label" fill="${ACCENT}" opacity="0.55">PROFILE</text>
+      <text x="48" y="186" class="mono" font-size="15" font-weight="600"
+        fill="#f4f4f5" letter-spacing="0.02em">${esc(config.role.toUpperCase())}</text>
+      <rect x="${roleCursorX}" y="171" width="2" height="16" fill="${ACCENT}" class="cursor"/>
+      <text x="48" y="211" class="mono" font-size="11.5" fill="#f4f4f5"
+        opacity="0.56" letter-spacing="0.03em">${esc(profileDetail)}</text>
+
+      <text x="48" y="264" class="label" fill="${ACCENT}" opacity="0.55">OPEN_SOURCE</text>
+      <text x="48" y="292" class="mono" font-size="17" font-weight="700"
+        fill="${ACCENT}" letter-spacing="0.02em">${esc(config.featured.title.toUpperCase())}</text>
+      <text x="384" y="292" class="mono" font-size="12" text-anchor="end"
+        fill="#f4f4f5" opacity="0.7">★ ${featuredStars}</text>
+      <text x="48" y="316" class="mono" font-size="12" fill="#f4f4f5"
+        letter-spacing="0.05em">${esc(config.featured.tagline.toUpperCase())}</text>
+      ${descriptionLines
+        .map(
+          (line, index) =>
+            `<text x="48" y="${339 + index * 15}" class="mono" font-size="10.5" fill="#f4f4f5" opacity="0.48">${esc(line)}</text>`
+        )
+        .join("\n      ")}
+
+      <rect x="48" y="370" width="100" height="1.5" fill="${ACCENT}" opacity="0.5"/>
+      <rect x="158" y="370" width="30" height="1.5" fill="${ACCENT}" opacity="0.2"/>
+      <text x="48" y="390" class="mono" font-size="9" fill="#ffffff"
+        opacity="0.18" letter-spacing="0.1em">github.com/${esc(config.username)}</text>
+    </g>
+  </g>
 </svg>`;
 }
 
@@ -322,23 +355,19 @@ async function main() {
   try {
     featuredStars = await loadFeaturedStars(config);
   } catch (error) {
-    console.warn("Could not refresh the featured project stars; generating with zero.", error);
+    console.warn(
+      "Could not refresh the featured project stars; generating with zero.",
+      error
+    );
   }
 
   const stackIcons = await loadStackIcons(config);
 
   await mkdir(new URL("../assets/", import.meta.url), { recursive: true });
-
-  await Promise.all([
-    writeFile(
-      new URL("../assets/terminal-dark.svg", import.meta.url),
-      render(config, featuredStars, stackIcons, themes.dark)
-    ),
-    writeFile(
-      new URL("../assets/terminal-light.svg", import.meta.url),
-      render(config, featuredStars, stackIcons, themes.light)
-    )
-  ]);
+  await writeFile(
+    new URL("../assets/hacker-profile.svg", import.meta.url),
+    render(config, featuredStars, stackIcons)
+  );
 }
 
 await main();
