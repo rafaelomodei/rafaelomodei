@@ -34,7 +34,7 @@
     <text y="208" class="info">
       <tspan x="565" fill="#0969da">role</tspan>
       <tspan x="655" fill="#57606a">:</tspan>
-      <tspan x="675" fill="#24292f">Senior Full Stack Software Engineer</tspan>
+      <tspan x="675" fill="#24292f">Senior Full-Stack Software Engineer</tspan>
     </text>
   
     <text y="250" class="info">
@@ -52,7 +52,7 @@
     <text y="334" class="info">
       <tspan x="565" fill="#0969da">focus</tspan>
       <tspan x="655" fill="#57606a">:</tspan>
-      <tspan x="675" fill="#24292f">Web platforms, APIs, automation and integrations</tspan>
+      <tspan x="675" fill="#24292f">APIs // AUTOMATION // INTEGRATIONS</tspan>
     </text>
   <text x="565" y="376" class="info" fill="#0969da">stack</text>
   <line x1="625" y1="371" x2="1085" y2="371" stroke="#d0d7de"/>
@@ -123,7 +123,7 @@
 
   <rect x="535" y="545" width="573" height="155" rx="10" fill="#eaeef2" stroke="#d0d7de"/>
   <text x="560" y="580" class="small" fill="#1a7f37">$ open ~/projects/easySlicePrint</text>
-  <text x="560" y="615" class="project" fill="#bc4c00">EasySlice Print</text>
+  <text x="560" y="615" class="project" fill="#bc4c00">Easy-Slice-Print</text>
   <text x="1080" y="615" text-anchor="end" class="small" fill="#57606a">★ 3</text>
   <text x="560" y="646" class="line" fill="#24292f">Cut. Connect. Print.</text>
   <text x="560" y="675" class="small" fill="#57606a">Open-source Blender add-on for model splitting,</text>
